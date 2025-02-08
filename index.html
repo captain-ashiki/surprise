@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rose Day Surprise</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            font-family: 'Arial', sans-serif;
+        }
+
+        .card {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #e74c3c;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .gift-box {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto;
+            cursor: pointer;
+        }
+
+        .lid {
+            width: 150px;
+            height: 20px;
+            background: #e74c3c;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 5px 5px 0 0;
+            transition: transform 0.5s ease;
+        }
+
+        .box {
+            width: 150px;
+            height: 100px;
+            background: #c0392b;
+            position: absolute;
+            top: 20px;
+            left: 0;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .flower {
+            margin-top: 20px;
+            position: relative;
+            opacity: 0;
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .petals {
+            width: 50px;
+            height: 50px;
+            background: #ff6f61;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bloom 2s ease-in-out forwards;
+        }
+
+        .stem {
+            width: 10px;
+            height: 100px;
+            background: #2ecc71;
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .message {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #333;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .hidden {
+            opacity: 0;
+        }
+
+        @keyframes bloom {
+            0% {
+                transform: translateX(-50%) scale(0);
+            }
+            100% {
+                transform: translateX(-50%) scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Happy Rose Day!</h1>
+        <div class="gift-box" onclick="revealFlower()">
+            <div class="lid"></div>
+            <div class="box"></div>
+        </div>
+        <div class="flower hidden" id="flower">
+            <div class="petals"></div>
+            <div class="stem"></div>
+        </div>
+        <p class="message hidden" id="message">You are as beautiful as rose meriiii jaaaan ! 🌹</p>
+    </div>
+
+    <script>
+        function revealFlower() {
+            const flower = document.getElementById('flower');
+            const message = document.getElementById('message');
+            const lid = document.querySelector('.lid');
+
+            // Open the gift box
+            lid.style.transform = 'rotate(15deg) translateY(-20px)';
+
+            // Reveal the flower and message
+            setTimeout(() => {
+                flower.classList.remove('hidden');
+                message.classList.remove('hidden');
+                flower.style.opacity = '1';
+                message.style.opacity = '1';
+            }, 500);
+        }
+    </script>
+</body>
+</html>
